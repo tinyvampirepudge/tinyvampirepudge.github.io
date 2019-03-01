@@ -2,6 +2,9 @@
 
 这是使用github-pages + jekyll搭建的第一个个人博客主页，有好多不完善的地方，望大家多多指正。
 
+[个人主页](https://tinyvampirepudge.github.io/)
+[csdn](https://blog.csdn.net/qq_26287435)
+
 
 如何写文章
 ------------------------------------
