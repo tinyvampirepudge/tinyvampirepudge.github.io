@@ -7,10 +7,10 @@ resume_site: 个人简历地址
 github: https://github.com/tinyvampirepudge
 csdn_site: https://blog.csdn.net/qq_26287435
 baseurl: ""
-description: 好看的外表千篇一律，有趣的灵魂万里挑一
+description: 好看的外表千篇一律，有趣的灵魂万里挑一。
 meta_description: 王建洲;个人博客;学而不思则罔，思而不学则殆;生命不止;折腾不休
-motto: 好看的外表千篇一律，有趣的灵魂万里挑一.
-banner: 学而不思则罔，思而不学则殆。
+motto: 一日一钱，千日一千。绳锯木断，水滴石穿。
+banner: 好记性不如烂笔头。
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
