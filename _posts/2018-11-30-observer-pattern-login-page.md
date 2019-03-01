@@ -2,7 +2,7 @@
 layout: post
 title:  观察者模式实战——登录页面
 date:   2018-11-30 15:31:52 +0800
-categories: [Design Pattern]
+categories: Design Pattern
 tag: [Observer, 观察者模式]
 ---
 

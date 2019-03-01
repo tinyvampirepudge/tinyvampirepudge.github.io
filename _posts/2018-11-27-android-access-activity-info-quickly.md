@@ -2,7 +2,7 @@
 layout: post
 title:  Android快速查看某个Activity的信息
 date:   2018-11-27 19:00:24 +0800
-categories: [Android]
+categories: Android
 tag: [dumpsys, adb shell]
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title:  基本的线程机制
 date:   2019-01-21 16:20:34 +0800
-categories: [Android, Java]
+categories: Java
 tag: [Thread, Think In Java]
 ---
 

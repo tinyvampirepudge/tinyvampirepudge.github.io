@@ -2,7 +2,7 @@
 layout: post
 title:  Android studio项目中的gradle.properties详解
 date:   2018-12-07 14:18:38 +0800
-categories: [Android]
+categories: Android
 tag: [Gradle, gradle.properties]
 ---
 

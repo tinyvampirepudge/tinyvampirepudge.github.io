@@ -2,7 +2,7 @@
 layout: post
 title:  Java compiler error: constant string too long
 date:   2019-01-16 18:08:07 +0800
-categories: [Java]
+categories: Java
 tag: [String]
 ---
 

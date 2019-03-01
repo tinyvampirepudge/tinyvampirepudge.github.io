@@ -2,7 +2,7 @@
 layout: post
 title:  Android Studio项目中的Gradle视图内容
 date:   2018-12-10 11:40:13 +0800
-categories: [Android]
+categories: Android
 tag: [Gradle]
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title:  HashMap 1.8 源码简读
 date:   2018-12-14 15:26:01 +0800
-categories: [Java]
+categories: Java
 tag: [HashMap]
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title:  Android中动态获取最新的git commit_id
 date:   2019-01-22 16:04:50 +0800
-categories: [Android, git]
+categories: Android
 tag: [git, commit_id, 动态获取commitId]
 ---
 

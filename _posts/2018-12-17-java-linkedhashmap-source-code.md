@@ -2,7 +2,7 @@
 layout: post
 title:  LinkedHashMap源码简读
 date:   2018-12-17 18:50:16 +0800
-categories: [Java]
+categories: Java
 tag: [LinkedHashMap]
 ---
 
