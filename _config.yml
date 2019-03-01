@@ -1,0 +1,26 @@
+# Site settings
+name: TinyVampirePudge
+email: tinyvampire1102@gmail.com
+author: TinyVampirePudge
+url: https://tinyvampirepudge.github.io/
+resume_site: 个人简历地址
+github: https://github.com/tinyvampirepudge
+baseurl: ""
+description: 好看的外表千篇一律，有趣的灵魂万里挑一
+meta_description: 王建洲;个人博客;学而不思则罔，思而不学则殆;生命不止;折腾不休
+motto: 好看的外表千篇一律，有趣的灵魂万里挑一.
+banner: 学而不思则罔，思而不学则殆。
+
+#permalink: /:categories/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
+paginate: 10
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+
+github_username: tinyvampirepudge
+
+# Build settings
+markdown: kramdown
+
+baidu_analysis: 
+
