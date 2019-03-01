@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Dart配置环境变量
-date:   2016-08-27 11:40:00 +0800
+date:   2019-08-27 11:40:00 +0800
 categories: dart
 tag: [dart]
 ---
