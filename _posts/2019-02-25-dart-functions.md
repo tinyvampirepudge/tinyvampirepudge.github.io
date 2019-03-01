@@ -2,8 +2,8 @@
 layout: post
 title:  Functions——Dart
 date:   2019-02-25 22:04:30 +0800
-categories: dart
-tag: [functions]
+categories: Dart
+tag: [Functions]
 ---
 
 * content

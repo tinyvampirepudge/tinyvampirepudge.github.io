@@ -2,8 +2,8 @@
 layout: post
 title:  Dart配置环境变量
 date:   2019-02-25 15:05:26 +0800
-categories: dart
-tag: [dart]
+categories: Dart
+tag: [Dart]
 ---
 
 * content

@@ -3,7 +3,7 @@ layout: post
 title:  jekyll 配置环境变量——zsh
 date:   2019-02-28 23:22:29 +0800
 categories: 个人主页搭建
-tag: [jekyll]
+tag: [Jekyll]
 ---
 
 * content

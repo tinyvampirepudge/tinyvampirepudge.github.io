@@ -2,7 +2,7 @@
 layout: post
 title:  Functions Paramaters——Dart
 date:   2019-02-25 12:04:23 +0800
-categories: dart
+categories: Dart
 tag: [Dart函数参数类型, Functions Paramaters]
 ---
 
