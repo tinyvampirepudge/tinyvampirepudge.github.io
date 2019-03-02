@@ -23,86 +23,91 @@ tag: [循环队列]
 另外一点需要注意的是，当队列满时，tail指针指向的位置实际上是没有存储数据的，所以会浪费一个数组的存储空间。
 
 代码实现如下：
+
 ```
 public class CircularQueue implements QueueInterface {
-private String[] values;// 容器
-private int capacity = 0;// 容量
-// head 表示队头下标，tail表示对尾下标
-private int head = 0;
-private int tail = 0;
+    private String[] values;// 容器
+    private int capacity = 0;// 容量
+    // head 表示队头下标，tail表示对尾下标
+    private int head = 0;
+    private int tail = 0;
 
-public CircularQueue(int capacity) {
-values = new String[capacity];
-this.capacity = capacity;
-}
+    public CircularQueue(int capacity) {
+        values = new String[capacity];
+        this.capacity = capacity;
+    }
 
-@Override
-public Boolean enqueue(String value) {
-// 队列满了
-if ((tail + 1) % capacity == head) {
-return false;
-}
-values[tail] = value;
-tail = (tail + 1) % capacity;
-return true;
-}
+    @Override
+    public Boolean enqueue(String value) {
+        // 队列满了
+        if ((tail + 1) % capacity == head) {
+            return false;
+        }
+        values[tail] = value;
+        tail = (tail + 1) % capacity;
+        return true;
+    }
 
-@Override
-public String dequeue() {
-// 如果head == tail 表示队列为空
-if (head == tail) {
-return null;
-}
-String ret = values[head];
-head = (head + 1) % capacity;
-return ret;
-}
+    @Override
+    public String dequeue() {
+        // 如果head == tail 表示队列为空
+        if (head == tail) {
+            return null;
+        }
+        String ret = values[head];
+        head = (head + 1) % capacity;
+        return ret;
+    }
 
-@Override
-public String toString() {
-return "CircularQueue{" +
-"values=" + Arrays.toString(values) +
-", capacity=" + capacity +
-", head=" + head +
-", tail=" + tail +
-'}';
-}
+    @Override
+    public String toString() {
+        return "CircularQueue{" +
+                "values=" + Arrays.toString(values) +
+                ", capacity=" + capacity +
+                ", head=" + head +
+                ", tail=" + tail +
+                '}';
+    }
 }
 ```
+
 测试代码：
+
 ```
-CircularQueue cq = new CircularQueue(10);
-System.out.println(cq);
-System.out.println();
+    CircularQueue cq = new CircularQueue(10);
+    System.out.println(cq);
+    System.out.println();
 
-//正常添加的数据
-System.out.println("正常添加的数据:");
-for (int i = 0; i < 9; i++) {
-System.out.println("cq.enqueue():" + cq.enqueue("" + i + i + i));
-System.out.println(cq);
-}
-System.out.println();
+    //正常添加的数据
+    System.out.println("正常添加的数据:");
+    for (int i = 0; i < 9; i++) {
+        System.out.println("cq.enqueue():" + cq.enqueue("" + i + i + i));
+        System.out.println(cq);
+    }
+    System.out.println();
 
-// 队列满了以后添加数据
-System.out.println("队列满了以后添加数据:");
-System.out.println("cq.enqueue():" + cq.enqueue("aaa"));
-System.out.println(cq);
-System.out.println();
+    // 队列满了以后添加数据
+    System.out.println("队列满了以后添加数据:");
+    System.out.println("cq.enqueue():" + cq.enqueue("aaa"));
+    System.out.println(cq);
+    System.out.println();
 
-// 清空队列
-System.out.println("清空队列:");
-for (int i = 0; i < 9; i++) {
-System.out.println("cq.dequeue():" + cq.dequeue());
-System.out.println(cq);
-}
-System.out.println();
+    // 清空队列
+    System.out.println("清空队列:");
+    for (int i = 0; i < 9; i++) {
+        System.out.println("cq.dequeue():" + cq.dequeue());
+        System.out.println(cq);
+    }
+    System.out.println();
 
-// 队列清空以后，继续清空
-System.out.println("队列清空以后，继续清空:");
-System.out.println("cq.dequeue():" + cq.dequeue());
-System.out.println(cq);
+    // 队列清空以后，继续清空
+    System.out.println("队列清空以后，继续清空:");
+    System.out.println("cq.dequeue():" + cq.dequeue());
+    System.out.println(cq);
 ```
+
 输出结果：符合期望
+
 ```
 CircularQueue{values=[null, null, null, null, null, null, null, null, null, null], capacity=10, head=0, tail=0}
 
@@ -157,11 +162,10 @@ CircularQueue{values=[000, 111, 222, 333, 444, 555, 666, 777, 888, null], capaci
 
 #### 完整代码请查看
 项目中搜索SingleLinkedList即可。
+
 github传送门 [https://github.com/tinyvampirepudge/DataStructureDemo](https://github.com/tinyvampirepudge/DataStructureDemo)
 
 gitee传送门 [https://gitee.com/tinytongtong/DataStructureDemo](https://gitee.com/tinytongtong/DataStructureDemo)
 
 参考：
 [队列：队列在线程池等有限资源池中的应用](https://time.geekbang.org/column/article/41330)
-
-

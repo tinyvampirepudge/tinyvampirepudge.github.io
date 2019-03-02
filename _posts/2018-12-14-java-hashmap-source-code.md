@@ -14,10 +14,11 @@ tag: [HashMap]
 ### HashMap 1.8 源码简读
 
 #### 初始大小:默认为16
+
 ```
 /**
-* The default initial capacity - MUST be a power of two.
-*/
+ * The default initial capacity - MUST be a power of two.
+ */
 static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; // aka 16
 ```
 
@@ -28,47 +29,53 @@ static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; // aka 16
 ②在第一次调用`put(K key, V value)`方法添加元素时，会调用`resize()`方法来初始化`table`，而在`resize()`方法中，此时初始容量会被`threshold`的值代替。
 
 关键代码如下所示：
+
 ```
 public HashMap(int initialCapacity, float loadFactor) {
-...
-this.threshold = tableSizeFor(initialCapacity);
+    ...
+    this.threshold = tableSizeFor(initialCapacity);
 }
 ```
 
 请看resize()方法中的这行注释：initial capacity was placed in threshold
+
 ```
 final Node<K,V>[] resize() {
-...
-if (oldCap > 0) {
-...
-}
-else if (oldThr > 0) // initial capacity was placed in threshold
-newCap = oldThr;
-else {               // zero initial threshold signifies using defaults
-...
-}
-...
+    ...
+    if (oldCap > 0) {
+        ...
+    }
+    else if (oldThr > 0) // initial capacity was placed in threshold
+        newCap = oldThr;
+    else {               // zero initial threshold signifies using defaults
+        ...
+    }
+    ...
 }
 ```
+
 如上所示，HashMap在指定了初始化容量之后，初始容器的大小会变为大于等于指定初始值、且最小的2的整数次幂。
 
 tableSizeFor方法如下所示：
+
 ```
 /**
-* Returns a power of two size for the given target capacity.
-*/
+ * Returns a power of two size for the given target capacity.
+ */
 static final int tableSizeFor(int cap) {
-int n = cap - 1;
-n |= n >>> 1;
-n |= n >>> 2;
-n |= n >>> 4;
-n |= n >>> 8;
-n |= n >>> 16;
-return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
+    int n = cap - 1;
+    n |= n >>> 1;
+    n |= n >>> 2;
+    n |= n >>> 4;
+    n |= n >>> 8;
+    n |= n >>> 16;
+    return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
 }
 ```
+
 返回大于等于输入参数且最近的2的整数次幂的数.
 测试结果如下：
+
 ```
 tableSizeFor(0):1
 tableSizeFor(1):1
@@ -84,54 +91,57 @@ tableSizeFor(9):16
 
 #### 装载因子和动态扩容：
 装载因子：默认为0.75，可在HashMap初始化时设置。
+
 ```
 /**
-* The load factor used when none specified in constructor.
-*/
+ * The load factor used when none specified in constructor.
+ */
 static final float DEFAULT_LOAD_FACTOR = 0.75f;
 ```
 
 扩容规则是新的容量是原来容量的两倍。
 HashMap中table数组的初始化和动态扩容的方法是resize()，关于扩容容量的代码如下：
 注意这行代码：`newCap = oldCap << 1`
+
 ```
 /**
-* Initializes or doubles table size.  If null, allocates in
-* accord with initial capacity target held in field threshold.
-* Otherwise, because we are using power-of-two expansion, the
-* elements from each bin must either stay at same index, or move
-* with a power of two offset in the new table.
-*
-* @return the table
-*/
+ * Initializes or doubles table size.  If null, allocates in
+ * accord with initial capacity target held in field threshold.
+ * Otherwise, because we are using power-of-two expansion, the
+ * elements from each bin must either stay at same index, or move
+ * with a power of two offset in the new table.
+ *
+ * @return the table
+ */
 final Node<K,V>[] resize() {
-...
-if (oldCap > 0) {
-if (oldCap >= MAXIMUM_CAPACITY) {
-threshold = Integer.MAX_VALUE;
-return oldTab;
-}else if ((newCap = oldCap << 1) < MAXIMUM_CAPACITY &&
-oldCap >= DEFAULT_INITIAL_CAPACITY)
-newThr = oldThr << 1; // double threshold
-}
-else if (oldThr > 0) // initial capacity was placed in threshold
-...
-else { // zero initial threshold signifies using defaults
-...
-}
-...
+    ...
+    if (oldCap > 0) {
+        if (oldCap >= MAXIMUM_CAPACITY) {
+            threshold = Integer.MAX_VALUE;
+            return oldTab;
+        }else if ((newCap = oldCap << 1) < MAXIMUM_CAPACITY &&
+                 oldCap >= DEFAULT_INITIAL_CAPACITY)
+            newThr = oldThr << 1; // double threshold
+    }
+    else if (oldThr > 0) // initial capacity was placed in threshold
+        ...
+    else { // zero initial threshold signifies using defaults
+        ...
+    }
+    ...
 }
 ```
 
 ##### 触发扩容操作的阈值：threshold
 计算规则：`threshold = capacity * loadFactor`
 变量定义如下：
+
 ```
 /**
-* The next size value at which to resize (capacity * load factor).
-*
-* @serial
-*/
+ * The next size value at which to resize (capacity * load factor).
+ *
+ * @serial
+ */
 // (The javadoc description is true upon serialization.
 // Additionally, if the table array has not been allocated, this
 // field holds the initial array capacity, or zero signifying
@@ -141,9 +151,10 @@ int threshold;
 
 扩容触发条件：数据数量大于阈值时。
 代码在resize()方法中：
+
 ```
 if (++size > threshold)
-resize();
+    resize();
 ```
 
 触发扩容操作以后，会在resize()方法中进行数据迁移。是一次性数据迁移，细节请看源码。
@@ -152,10 +163,12 @@ resize();
 链表转化成红黑树，红黑树转化成链表。
 1、链表转化成红黑树：
 HashMap#putVal方法中，当在该角标下，原有存储的链表结点个数大于等于7的时候，就将链表转化为红黑树。具体方法代码如下：
+
 ```
 if (binCount >= TREEIFY_THRESHOLD - 1) // -1 for 1st
-treeifyBin(tab, hash);
+    treeifyBin(tab, hash);
 ```
+
 具体的转换过程请看`treeifyBin`方法。
 
 2、红黑树转化成链表：
@@ -164,29 +177,32 @@ treeifyBin(tab, hash);
 
 #### HashMap中的散列函数
 hash方法如下：
+
 ```
 /**
-* Computes key.hashCode() and spreads (XORs) higher bits of hash
-* to lower.  Because the table uses power-of-two masking, sets of
-* hashes that vary only in bits above the current mask will
-* always collide. (Among known examples are sets of Float keys
-* holding consecutive whole numbers in small tables.)  So we
-* apply a transform that spreads the impact of higher bits
-* downward. There is a tradeoff between speed, utility, and
-* quality of bit-spreading. Because many common sets of hashes
-* are already reasonably distributed (so don't benefit from
-* spreading), and because we use trees to handle large sets of
-* collisions in bins, we just XOR some shifted bits in the
-* cheapest possible way to reduce systematic lossage, as well as
-* to incorporate impact of the highest bits that would otherwise
-* never be used in index calculations because of table bounds.
-*/
+ * Computes key.hashCode() and spreads (XORs) higher bits of hash
+ * to lower.  Because the table uses power-of-two masking, sets of
+ * hashes that vary only in bits above the current mask will
+ * always collide. (Among known examples are sets of Float keys
+ * holding consecutive whole numbers in small tables.)  So we
+ * apply a transform that spreads the impact of higher bits
+ * downward. There is a tradeoff between speed, utility, and
+ * quality of bit-spreading. Because many common sets of hashes
+ * are already reasonably distributed (so don't benefit from
+ * spreading), and because we use trees to handle large sets of
+ * collisions in bins, we just XOR some shifted bits in the
+ * cheapest possible way to reduce systematic lossage, as well as
+ * to incorporate impact of the highest bits that would otherwise
+ * never be used in index calculations because of table bounds.
+ */
 static final int hash(Object key) {
-int h;
-return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+    int h;
+    return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
 }
 ```
+
 在插入或查找的时候，计算key被映射到的位置
+
 ```
 int index = hash(key) & (capacity - 1)
 ```
@@ -210,4 +226,3 @@ JDK HashMap中hash函数的设计，确实很巧妙：
 [散列表——维基百科](https://zh.wikipedia.org/wiki/%E5%93%88%E5%B8%8C%E8%A1%A8)
 
 [Java8-HashMap 详解](http://www.manuu.vip/2017/05/21/Map-HashMap/)
-

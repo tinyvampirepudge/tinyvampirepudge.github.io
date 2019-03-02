@@ -118,33 +118,35 @@ Thread.toString()方法会打印线程的名称、线程的优先级以及线程
 可以通过调用isDaemon()方法来确定线程是否是一个后台线程。如果是一个后台线程，那么它创建的任何线程都将被自动设置成后台线程。
 
 ##### 后台线程在不执行finally语句的情况下，就会终止其run()方法。
+
 ```
 public class DaemonsDontRunFinally {
 
-public static void main(String[] args) {
-Thread t = new Thread(new ADaemon());
-t.setDaemon(true);
-t.start();
-}
+    public static void main(String[] args) {
+        Thread t = new Thread(new ADaemon());
+        t.setDaemon(true);
+        t.start();
+    }
 
 }
 
 class ADaemon implements Runnable {
 
-@Override
-public void run() {
-try {
-System.out.println("Starting ADaemon");
-TimeUnit.SECONDS.sleep(1);
-} catch (InterruptedException e) {
-System.out.println("Exiting via InterruptedException");
-} finally {
-System.out.println("This should always run?");
-}
-}
+    @Override
+    public void run() {
+        try {
+            System.out.println("Starting ADaemon");
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            System.out.println("Exiting via InterruptedException");
+        } finally {
+            System.out.println("This should always run?");
+        }
+    }
 
 }
 ```
+
 当你运行这个程序时，你将看到finally子句就不会执行，但是如果你注释掉对setDaemon()的调用，就会看到finally子句将会执行。
 
 这种行为是正确的，即便你基于前面对finally给出的承诺，并不希望出现这种行为，但情况仍将如此。当最后一个费后台线程终止时，后台现场会“突然”终止。因此一旦main()退出，JVM就会立即关闭所有的后台进程，而不会有任何你希望出现的确认形式。因此你不能以优雅的方式来关闭后台线程，所以它们几乎不是一种好的思想。
@@ -203,12 +205,12 @@ Java的线程机制基于来自C的地基的p线程方式，这是一种你必�
 我们创建一个ThreadFactory，它将在每个新创建的Thread对象上附着一个Thread.UncaughtExceptionHandler。我们将这个工厂传递给Executor即可。
 
 如果你需要在代码中处处使用相同的异常处理器，那么可以在Thread类中设置一个静态与，并将这个处理器设置为默认的未捕获异常处理器。
+
 ```
 Thread.setDefaultUncaughtExceptionHandler(new MyUncaughtExceptionHandler());
 ```
+
 这个处理器只有在不存在线程专有的未捕获异常处理器的情况下才会被调用。
 
 系统检查专有版本，如果没有发现，则检查线程组是否有其转悠的uncaughtException()方法，如果也没有，再调用defaultUncaughtExceptionHandler。
-
-
 

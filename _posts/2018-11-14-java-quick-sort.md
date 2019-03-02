@@ -26,67 +26,69 @@ tag: [快速排序]
 ```
 public class QuickSort {
 
-/**
-* 快速排序
-*
-* @param a
-* @param n
-*/
-public static void quickSort(int[] a, int n) {
-quickSortRecursive(a, 0, n - 1);
-}
+    /**
+     * 快速排序
+     *
+     * @param a
+     * @param n
+     */
+    public static void quickSort(int[] a, int n) {
+        quickSortRecursive(a, 0, n - 1);
+    }
 
-/**
-* 快速排序递归函数，p,r为下标。
-*
-* @param a
-* @param p
-* @param r
-*/
-public static void quickSortRecursive(int[] a, int p, int r) {
-if (p >= r) {
-return;
-}
-// 获取分区点
-int q = partition(a, p, r);
-quickSortRecursive(a, p, q - 1);
-quickSortRecursive(a, q + 1, r);
-}
+    /**
+     * 快速排序递归函数，p,r为下标。
+     *
+     * @param a
+     * @param p
+     * @param r
+     */
+    public static void quickSortRecursive(int[] a, int p, int r) {
+        if (p >= r) {
+            return;
+        }
+        // 获取分区点
+        int q = partition(a, p, r);
+        quickSortRecursive(a, p, q - 1);
+        quickSortRecursive(a, q + 1, r);
+    }
 
-public static int partition(int[] a, int p, int r) {
-int pivot = a[r];
-int i = p;
-for (int j = p; j < r; j++) {
-if (a[j] < pivot) {
-int t = a[i];
-a[i] = a[j];
-a[j] = t;
-i++;
-}
-}
-int t = a[i];
-a[i] = a[r];
-a[r] = t;
-return i;
-}
+    public static int partition(int[] a, int p, int r) {
+        int pivot = a[r];
+        int i = p;
+        for (int j = p; j < r; j++) {
+            if (a[j] < pivot) {
+                int t = a[i];
+                a[i] = a[j];
+                a[j] = t;
+                i++;
+            }
+        }
+        int t = a[i];
+        a[i] = a[r];
+        a[r] = t;
+        return i;
+    }
 }
 ```
 
 测试代码：
+
 ```
-int size = 10;
-if (size <= 0) {
-throw new IllegalArgumentException("size cannot bo lower than 0");
-}
-int[] a = SortUtils.generateRandomArray(size, 100);
-System.out.println("快速排序：");
-System.out.println(SortUtils.getArrayToString(a));
-QuickSort.quickSort(a, size);
-System.out.println(SortUtils.getArrayToString(a));
-System.out.println();
+        int size = 10;
+        if (size <= 0) {
+            throw new IllegalArgumentException("size cannot bo lower than 0");
+        }
+        int[] a = SortUtils.generateRandomArray(size, 100);
+        System.out.println("快速排序：");
+        System.out.println(SortUtils.getArrayToString(a));
+        QuickSort.quickSort(a, size);
+        System.out.println(SortUtils.getArrayToString(a));
+        System.out.println();
 ```
 
 测试结果：符合预期。
+
 ```
 I/System.out: 快速排序：
 I/System.out: [63,81,43,54,37,84,45,97,50,87]
@@ -101,4 +103,3 @@ gitee传送门 [https://gitee.com/tinytongtong/DataStructureDemo](https://gitee.
 
 参考：
 [排序（下）：如何用快排思想在O(n)内查找第K大元素？](https://time.geekbang.org/column/article/41913)
-

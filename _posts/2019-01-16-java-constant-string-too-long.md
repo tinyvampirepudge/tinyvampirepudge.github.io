@@ -14,9 +14,11 @@ tag: [String]
 ### Java compiler error: constant string too long
 
 最近项目中遇到解析图片的base64字符串需求，在测试时遇到了`error: constant string too long`这个错误，代码如下：
+
 ```
 String base64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAKoCAYAAABZ..."
 ```
+
 注意，这里实际上的字符串长度为752378，这里为了节省篇幅，只能简写。
 长度如何查看呢？将光标至于字符串末尾，然后查看Android Studio下方，如下图所示，冒号后面的为总大小。然后再减去多余字符即可。
 ![](https://tinytongtong-1255688482.cos.ap-beijing.myqcloud.com/WX20190116-173832.png)
@@ -24,13 +26,16 @@ String base64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAKoCAYAAABZ.
 ```
 752406 - （26 + 2） = 752378
 ```
+
 运行代码之后，报错如下：
 ![](https://tinytongtong-1255688482.cos.ap-beijing.myqcloud.com/WX20190116-174245.png)
 
 为了不干扰测试，将这段字符串写到资源文件strings.xml中，然后再获取即可规避这个错误，代码如下：
+
 ```
 String base64 = getResources().getString(R.string.string_base64);
 ```
+
 这样就不会报错了，继续测试即可。
 
 #### 错误原理分析：
@@ -39,14 +44,16 @@ String base64 = getResources().getString(R.string.string_base64);
 参考[Size of Initialisation string in java](https://stackoverflow.com/questions/8323082/size-of-initialisation-string-in-java)，Java中对String字面值的限制是65535。
 
 基于此，我们先进行如下测试，
+
 ```
-StringBuffer sb = new StringBuffer();
-for (int i = 0; i < 65536; i++) {
-sb.append("a");
-}
-String result = sb.toString();
-System.out.println(result);
+    StringBuffer sb = new StringBuffer();
+    for (int i = 0; i < 65536; i++) {
+        sb.append("a");
+    }
+    String result = sb.toString();
+    System.out.println(result);
 ```
+
 运行结果OK，不会报异常，说明运行时对字符串的长度限制不是65534。
 
 接下来测试我们尝试着将双引号定义字符串长度设为65535附近的值，校验下Java中对String字面值的限制是否准确。
@@ -65,4 +72,3 @@ System.out.println(result);
 [https://netbeans.org/bugzilla/show_bug.cgi?id=212752](https://netbeans.org/bugzilla/show_bug.cgi?id=212752)
 [https://stackoverflow.com/questions/8323082/size-of-initialisation-string-in-java](https://stackoverflow.com/questions/8323082/size-of-initialisation-string-in-java)
 [Java中String接受的最大字符串的长度是多少](https://blog.csdn.net/wolfking0608/article/details/78583944)
-
