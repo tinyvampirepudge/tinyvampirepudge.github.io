@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  flutter中实现仿Android端的onResume和onPause方法
+title:  flutter packages 开发实战——发布失败问题解决
 date:   2019-04-15 15:40:07 +0800
 categories: Flutter
 tag: [Flutter, flutter packages pub publish failed]
