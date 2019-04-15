@@ -47,22 +47,23 @@ Android中的Activity的生命周期方法如下所示：
 ![](https://tinytongtong-1255688482.cos.ap-beijing.myqcloud.com/Apr-15-2019%2010-50-57.gif)
 
 对应log：
+
 ```
-I/flutter ( 2376): Home:onMockCreate
-I/flutter ( 2376): Home:onMockResume _isVisiableToUser:true
-I/flutter ( 2376): ARoute:onMockCreate
-I/flutter ( 2376): ARoute:onMockResume _isVisiableToUser:true
-I/flutter ( 2376): Home:onMockPause _isVisiableToUser:false
-I/flutter ( 2376): CRoute:onMockCreate
-I/flutter ( 2376): CRoute:onMockResume _isVisiableToUser:true
-I/flutter ( 2376): ARoute:onMockPause _isVisiableToUser:false
-I/flutter ( 2376): ARoute:onMockResume _isVisiableToUser:true
-I/flutter ( 2376): CRoute:onMockPause _isVisiableToUser:false
-I/flutter ( 2376): CRoute:onMockDestroy
-I/flutter ( 2376): Home:onMockResume _isVisiableToUser:true
-I/flutter ( 2376): ARoute:onMockPause _isVisiableToUser:false
-I/flutter ( 2376): ARoute:onMockDestroy
-I/flutter ( 2376): Home:onMockPause _isVisiableToUser:true
+I/flutter ( 1954): Home --> onCreate()
+I/flutter ( 1954): Home --> onResume()
+I/flutter ( 1954): ARoute --> onCreate()
+I/flutter ( 1954): ARoute --> onResume()
+I/flutter ( 1954): Home --> onPause()
+I/flutter ( 1954): CRoute --> onCreate()
+I/flutter ( 1954): CRoute --> onResume()
+I/flutter ( 1954): ARoute --> onPause()
+I/flutter ( 1954): ARoute --> onResume()
+I/flutter ( 1954): CRoute --> onPause()
+I/flutter ( 1954): CRoute --> onDestroy()
+I/flutter ( 1954): Home --> onResume()
+I/flutter ( 1954): ARoute --> onPause()
+I/flutter ( 1954): ARoute --> onDestroy()
+I/flutter ( 1954): Home --> onPause()
 ```
 
 这里解释下：
@@ -81,21 +82,21 @@ home --> 桌面操作对应log： 15行
 对应log：
 
 ```
-I/flutter ( 2480): Home:onMockCreate
-I/flutter ( 2480): Home:onMockResume _isVisiableToUser:true
-I/flutter ( 2480): BRoute:onMockCreate
-I/flutter ( 2480): BRoute:onMockResume _isVisiableToUser:true
-I/flutter ( 2480): Home:onMockPause _isVisiableToUser:false
-I/flutter ( 2480): ERoute:onMockCreate
-I/flutter ( 2480): ERoute:onMockResume _isVisiableToUser:true
-I/flutter ( 2480): BRoute:onMockPause _isVisiableToUser:false
-I/flutter ( 2480): BRoute:onMockResume _isVisiableToUser:true
-I/flutter ( 2480): ERoute:onMockPause _isVisiableToUser:false
-I/flutter ( 2480): ERoute:onMockDestroy
-I/flutter ( 2480): Home:onMockResume _isVisiableToUser:true
-I/flutter ( 2480): BRoute:onMockPause _isVisiableToUser:false
-I/flutter ( 2480): BRoute:onMockDestroy
-I/flutter ( 2480): Home:onMockPause _isVisiableToUser:true
+I/flutter ( 2048): Home --> onCreate()
+I/flutter ( 2048): Home --> onResume()
+I/flutter ( 2048): BRoute --> onCreate()
+I/flutter ( 2048): BRoute --> onResume()
+I/flutter ( 2048): Home --> onPause()
+I/flutter ( 2048): FRoute --> onCreate()
+I/flutter ( 2048): FRoute --> onResume()
+I/flutter ( 2048): BRoute --> onPause()
+I/flutter ( 2048): BRoute --> onResume()
+I/flutter ( 2048): FRoute --> onPause()
+I/flutter ( 2048): FRoute --> onDestroy()
+I/flutter ( 2048): Home --> onResume()
+I/flutter ( 2048): BRoute --> onPause()
+I/flutter ( 2048): BRoute --> onDestroy()
+I/flutter ( 2048): Home --> onPause()
 ```
 
 这里解释下：
