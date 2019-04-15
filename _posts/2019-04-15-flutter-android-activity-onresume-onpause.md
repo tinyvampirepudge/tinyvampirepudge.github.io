@@ -9,6 +9,8 @@ tag: [Flutter, onResume, onPause]
 * content
 {:toc}
 
+
+
 ### flutter中实现仿Android端的onResume和onPause方法
 
 #### Android端Activity的生命周期
@@ -113,11 +115,11 @@ home --> 桌面操作对应log： 15行
 
 ##### 1、添加依赖：
 
-在pubspec.yaml文件中Tina及如下依赖：
+在pubspec.yaml文件中添加如下依赖：这里选择最新版本即可。
 
 ```
 dependencies:
-  flutter_lifecycle_state: ^0.0.1
+  flutter_lifecycle_state: ^0.0.x
 ```
 
 note:最新配置请看[https://pub.dartlang.org/packages/flutter_lifecycle_state#-installing-tab-](https://pub.dartlang.org/packages/flutter_lifecycle_state#-installing-tab-)页面。
@@ -149,12 +151,12 @@ class MyApp extends StatelessWidget {
 
 将每个页面级别的Widget的State替换为我们的StateWithLifecycle，导包即可。然后我们可以选择重写onCreate、onPause、onResume、onDestroy方法，在这些方法内部执行对应的业务逻辑即可。
 
-如果需要自定义当前页面的log标识的话，如下所示：给`state_with_lifecycle_tag`字段赋值即可。
+如果需要自定义当前页面的log标识的话，如下所示：给`tagInStateWithLifecycle`字段赋值即可。
 
 ```
 @override
   void initState() {
-    state_with_lifecycle_tag = "WidgetsTestPage";
+    tagInStateWithLifecycle = "WidgetsTestPage";
     super.initState();
   }
 ```
