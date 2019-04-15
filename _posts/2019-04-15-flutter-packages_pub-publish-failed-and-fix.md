@@ -192,6 +192,8 @@ pub finished with exit code 69
 
 #### 4、最终解决方式——命令行翻墙工具
 
+更新：使用lantern给终端设置代理请移步[mac中使用lantern给终端设置代理](https://blog.csdn.net/qq_26287435/article/details/89321578).
+
 这里推荐一种解决方式：mac端可使用`proxifier + shadowsocks`的方式。
 
 [Proxifier+Shadowshocks系统全局代理的正确姿势](http://blackwolfsec.cc/2016/09/19/Proxifier_Shadowshocks/)
