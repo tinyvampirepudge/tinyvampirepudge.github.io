@@ -23,7 +23,7 @@ Android常见的异步转同步的方式是通过Callback + Handler的方式来�
 
 CountDownLatch是一个同步工具类，它允许一个或多个线程一直等待，直到其他线程的操作执行完后再执行。
 
-这里有三个子任务Task1、Task2和Task3，我们想在Task2和Task3都执行完了以后，才执行Task2。实现如下：
+这里有三个子任务Task1、Task2和Task3，我们想在Task2和Task3都执行完了以后，才执行Task1。实现如下：
 
 1、先自定义一个Runnable，run方法中会打印当前线程，在线程执行完毕后会调用CountDownLatch#countDown()方法。
 
@@ -68,7 +68,7 @@ CountDownLatch是一个同步工具类，它允许一个或多个线程一直等
 ```
     public void onBtnJavaCountDownLatchClicked() {
         /**
-         * Task2和Task3都执行完了以后，才执行Task2
+         * Task2和Task3都执行完了以后，才执行Task1
          */
         countDownLatch = new CountDownLatch(2);
 
