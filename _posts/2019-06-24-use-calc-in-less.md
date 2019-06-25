@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  lessss中使用calc计算高度注意事项
+title:  less中使用calc计算高度注意事项
 date:   2019-06-24 18:59:18 +0800
 categories: less
 tag: [calc, less]
@@ -11,7 +11,7 @@ tag: [calc, less]
 
 
 
-### lessss中使用calc计算高度注意事项
+### less中使用calc计算高度注意事项
 
 我们知道，在css中我们可以使用`100vh`表示屏幕高度，我们还可以通过`calc(expression)`来动态计算宽高，于是便有了如下代码：
 
