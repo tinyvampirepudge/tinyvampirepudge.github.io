@@ -11,7 +11,7 @@ tag: [LinkedHashMap]
 
 
 
-### LinkedHashMap
+### LinkedHashMap源码简读
 
 1、LinkedHashMap继承自HashMap，HashMap具有的特性它都具有。
 

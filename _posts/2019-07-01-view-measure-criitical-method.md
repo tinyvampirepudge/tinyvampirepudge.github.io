@@ -9,9 +9,6 @@ tag: [View的测量、布局和绘制]
 * content
 {:toc}
 
-
-
-@[toc]
 ### View的测量、布局和绘制过程中的关键方法 
 我们这里说的View的测量、布局和绘制，实质上是针对ViewGroup的，简单起见就不区分View和ViewGroup。View的测量、布局和绘制是包含在ViewGroup流程中的。
 
