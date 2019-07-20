@@ -12,6 +12,8 @@ tag: [Dart Functions]
 
 
 @[toc]
+
+
 ### dart中将方法当做参数传递时的注意事项
 
 众所周知，Dart是一门面向对象的语言，比Java更纯粹，Dart中的方法也是对象，也有类型[Function](https://api.dartlang.org/stable/2.2.0/dart-core/Function-class.html)。这意味着方法可以被分配给对象，也可以当做参数传递给其他方法。

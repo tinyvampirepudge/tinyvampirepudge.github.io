@@ -12,6 +12,8 @@ tag: [Android Studio]
 
 
 @[toc]
+
+
 ### Android Studio插件的源文件位置——mac端
 
 Android Studio中我们可以通过菜单栏的`Android Studio --> preferences --> plugins`来查看我们安装的插件。这里介绍下插件的实际安装位置。
