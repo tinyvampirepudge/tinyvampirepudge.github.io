@@ -94,3 +94,26 @@ int lastPosition1 = paramsLast.getViewLayoutPosition();
 int lastCompletelyVisibleItemPosition = ((LinearLayoutManager)parent.getLayoutManager()).findLastCompletelyVisibleItemPosition();
 ```
 
+10、将某个位置的Item滑动到顶部
+
+第一种方式，有平滑动画的：
+
+```
+// 会有滚动效果，平滑动画，适用于列表数量不多的情景
+recyclerView.smoothScrollToPosition(0);
+```
+
+效果如下：
+
+![](https://tinytongtong-1255688482.cos.ap-beijing.myqcloud.com/Aug-09-2019%2011-35-39.gif)
+
+第二种方式，无动画的：
+
+```
+// 无滚动效果，不平滑。
+linearLayoutManager.scrollToPositionWithOffset(0,0);
+```
+
+效果如下：
+
+![](https://tinytongtong-1255688482.cos.ap-beijing.myqcloud.com/Aug-09-2019%2011-36-57.gif)
