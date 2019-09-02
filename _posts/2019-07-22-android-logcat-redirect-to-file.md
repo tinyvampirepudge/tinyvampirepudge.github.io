@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  创建文章demo
+title:  重定向adb logcat输出到文件
 date:   2019-07-22 15:26:37 +0800
-categories: demo
-tag: [demo]
+categories: logcat
+tag: [logcat]
 ---
 
 * content
