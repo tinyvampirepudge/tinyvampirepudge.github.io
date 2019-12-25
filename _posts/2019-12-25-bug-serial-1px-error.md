@@ -16,9 +16,7 @@ tag: [TextView]
 
 使用RecyclerView实现了一个类似WheelView的效果，这里RecyclerView的高度是5个item的高度。大致效果如下图所示：
 
-```
-https://tinytongtong-1255688482.cos.ap-beijing.myqcloud.com/Nov-11-2019%2017-25-22.gif
-```
+![](https://user-gold-cdn.xitu.io/2019/12/25/16f3ac62b60bdcd7?w=406&h=740&f=gif&s=3299992)
 
 具体项目地址：
 
