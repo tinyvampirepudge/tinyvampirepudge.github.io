@@ -92,11 +92,11 @@ RecyclerView的adapter布局如下：
 
 RecyclerView的实际高度：625px
 
-![](https://tinytongtong-1255688482.cos.ap-beijing.myqcloud.com/WX20191224-234604%402x.png)
+![](https://user-gold-cdn.xitu.io/2019/12/25/16f3abb8c7057056?w=2584&h=1162&f=png&s=1283582)
 
 单个item的实际高度：125px
 
-![](https://tinytongtong-1255688482.cos.ap-beijing.myqcloud.com/WX20191224-234632%402x.png)
+![](https://user-gold-cdn.xitu.io/2019/12/25/16f3abb8c7ad83c8?w=2546&h=1020&f=png&s=1142556)
 
 经过计算：625 = 125 * 5，所以显示正常。
 
@@ -105,11 +105,11 @@ RecyclerView的实际高度：625px
 
 如下图所示，RecyclerView的实际高度为391px：
 
-![](https://tinytongtong-1255688482.cos.ap-beijing.myqcloud.com/WX20191224-234656%402x.png)
+![](https://user-gold-cdn.xitu.io/2019/12/25/16f3abb8c7a6c311?w=2602&h=1128&f=png&s=1339870)
 
 单个item的实际高度为78px：
 
-![](https://tinytongtong-1255688482.cos.ap-beijing.myqcloud.com/WX20191224-234722%402x.png)
+![](https://user-gold-cdn.xitu.io/2019/12/25/16f3abb8c6f32dad?w=2584&h=1146&f=png&s=1351777)
 
 我们发现低版本手机上，RecyclerView的实际高度比5个item高度总和多了一像素（`391 - (78 * 5) = 1` ），导致屏幕上实际显示了6个item。
 
